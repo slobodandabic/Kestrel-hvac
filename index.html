@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Kestrel Heating & Air</title>
 <meta name="description" content="24/7 AC repair, installation and heating service across Greater Houston. Upfront flat-rate pricing, same-day appointments. (Concept site.)">
+<link rel="preload" as="image" href="images/hero-technician.webp">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;800;900&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -113,13 +114,27 @@ header.site {
 .trust li { display: flex; align-items: center; gap: 8px; }
 .trust svg { width: 18px; height: 18px; color: #3ddc84; flex: none; }
 
-/* Thermostat */
+/* Hero photo + thermostat */
+.hero-visual { position: relative; padding-bottom: 150px; }
+.hero-photo {
+  margin: 0; border-radius: 22px; overflow: hidden; aspect-ratio: 4 / 3.3;
+  box-shadow: 0 30px 60px -20px rgba(0,0,0,0.6);
+}
+.hero-photo img { width: 100%; height: 100%; object-fit: cover; object-position: 72% center; display: block; }
 .thermo {
   background: linear-gradient(160deg, #1e3047, #132235);
-  border: 1px solid rgba(255,255,255,0.1);
-  border-radius: 22px; padding: 28px; position: relative;
-  box-shadow: 0 30px 60px -20px rgba(0,0,0,0.55);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 20px; padding: 18px 20px 20px;
+  position: absolute; left: -56px; bottom: 0; width: 280px;
+  box-shadow: 0 30px 60px -20px rgba(0,0,0,0.7);
 }
+.thermo .dial { max-width: 170px; margin: 6px auto 4px; }
+.thermo .dial-read .num { font-size: 3.9rem; }
+.thermo .thermo-stats { gap: 6px; }
+.thermo .thermo-stats div { padding: 8px 9px; }
+.thermo .thermo-stats b { font-size: 1.3rem; }
+.thermo .thermo-stats span { font-size: 11px; }
+.thermo .thermo-note { display: none; }
 .thermo-top { display: flex; justify-content: space-between; font-size: 13px; color: #9fb2c6; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; }
 .dial { position: relative; width: 100%; max-width: 300px; margin: 14px auto 6px; aspect-ratio: 1; }
 .dial svg { width: 100%; height: 100%; display: block; }
@@ -167,6 +182,7 @@ section { padding: 88px 0; }
 .gulf-grid { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 64px; align-items: start; }
 .gulf-grid > div:first-child p { color: var(--slate); margin-top: 18px; }
 .facts { display: grid; gap: 0; border-top: 2px solid var(--ink); }
+.gulf-img { margin-top: 28px; width: 100%; height: auto; aspect-ratio: 16 / 11; object-fit: cover; border-radius: 14px; display: block; }
 .fact { display: grid; grid-template-columns: 120px 1fr; gap: 22px; padding: 22px 0; border-bottom: 1px solid var(--line); }
 .fact .big { font-family: var(--display); font-weight: 900; font-size: 3rem; line-height: 0.9; color: var(--rust); font-variant-numeric: tabular-nums; }
 .fact .big small { font-size: 0.45em; color: var(--slate); font-weight: 700; display: block; margin-top: 4px; letter-spacing: 0.04em; }
@@ -189,10 +205,13 @@ section { padding: 88px 0; }
 .plan-l ul { list-style: none; padding: 0; margin: 22px 0 0; display: grid; gap: 12px; }
 .plan-l li { display: flex; gap: 12px; align-items: flex-start; }
 .plan-l li svg { width: 20px; height: 20px; color: var(--rust); flex: none; margin-top: 4px; }
-.plan-r { background: #eef3f8; padding: 40px; display: flex; flex-direction: column; justify-content: center; gap: 14px; border-left: 1px solid var(--line); }
+.plan-r {
+  background: linear-gradient(180deg, rgba(15,27,42,0.80), rgba(15,27,42,0.92)), url(images/thermostat.webp) center / cover;
+  color: #fff; padding: 40px; display: flex; flex-direction: column; justify-content: center; gap: 14px;
+}
 .plan-price { font-family: var(--display); font-weight: 900; font-size: 5rem; line-height: 0.9; font-variant-numeric: tabular-nums; }
-.plan-price small { font-size: 0.32em; font-weight: 700; color: var(--slate); }
-.plan-r p { color: var(--slate); font-size: 15px; }
+.plan-price small { font-size: 0.32em; font-weight: 700; color: #c9d5e2; }
+.plan-r p { color: #c9d5e2; font-size: 15px; }
 
 /* Areas */
 .areas { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; border-top: 1px solid var(--line); border-left: 1px solid var(--line); }
@@ -267,10 +286,10 @@ footer.site { background: #0a131e; color: #9fb2c6; padding: 48px 0 110px; font-s
 @media (max-width: 960px) {
   .hero-grid, .gulf-grid, .faq-grid, .book-grid, .sec-head, .plan { grid-template-columns: 1fr; }
   .hero-grid { gap: 40px; }
-  .thermo { max-width: 440px; }
+  .hero-visual { padding-bottom: 0; display: grid; gap: 16px; }
+  .thermo { position: static; width: auto; max-width: 440px; }
   .services, .reviews, .steps { grid-template-columns: 1fr 1fr; }
   .areas { grid-template-columns: repeat(2, 1fr); }
-  .plan-r { border-left: 0; border-top: 1px solid var(--line); }
   .foot-grid { grid-template-columns: 1fr 1fr; }
   .nav-links, .nav .btn { display: none; }
   .menu-toggle { display: block; }
@@ -362,6 +381,10 @@ footer.site { background: #0a131e; color: #9fb2c6; padding: 48px 0 110px; font-s
       </ul>
     </div>
 
+    <div class="hero-visual">
+    <figure class="hero-photo">
+      <img src="images/hero-technician.webp" width="1800" height="1012" alt="Kestrel technician checking refrigerant pressure on an outdoor AC unit" fetchpriority="high">
+    </figure>
     <div class="thermo" aria-label="Thermostat illustration: 72 degrees inside, 98 degrees outside">
       <div class="thermo-top"><span>Living room</span><span>Cooling ●</span></div>
       <div class="dial">
@@ -392,6 +415,7 @@ footer.site { background: #0a131e; color: #9fb2c6; padding: 48px 0 110px; font-s
         <div><b>45%</b><span>Indoor RH</span></div>
       </div>
       <p class="thermo-note">A properly sized system pulls indoor humidity down too, not just the temperature.</p>
+    </div>
     </div>
   </div>
 </section>
@@ -458,6 +482,7 @@ footer.site { background: #0a131e; color: #9fb2c6; padding: 48px 0 110px; font-s
       <span class="kicker">Why it matters here</span>
       <h2 id="gulf-title">Built for Gulf Coast summers</h2>
       <p>An AC in Houston works harder than almost anywhere in the country. It has to fight the heat and the humidity, for months at a time, with the air handler sitting in a scorching attic. We install and repair with that in mind.</p>
+      <img class="gulf-img" src="images/houston-home.webp" width="1400" height="933" alt="Two-story suburban home with a front lawn on a sunny day" loading="lazy">
     </div>
     <div class="facts">
       <div class="fact">
@@ -508,7 +533,7 @@ footer.site { background: #0a131e; color: #9fb2c6; padding: 48px 0 110px; font-s
       <div class="plan-r">
         <div class="plan-price">$19<small> / month</small></div>
         <p>Covers one system. Add a second for $9/month. Cancel any time.</p>
-        <a class="btn btn-ink" href="#book">Join the Comfort Club</a>
+        <a class="btn btn-rust" href="#book" style="align-self:flex-start">Join the Comfort Club</a>
       </div>
     </div>
   </div>

@@ -115,7 +115,7 @@ header.site {
 .trust svg { width: 18px; height: 18px; color: #3ddc84; flex: none; }
 
 /* Hero photo + thermostat */
-.hero-visual { position: relative; padding-bottom: 150px; }
+.hero-visual { position: relative; }
 .hero-photo {
   margin: 0; border-radius: 22px; overflow: hidden; aspect-ratio: 4 / 3.3;
   box-shadow: 0 30px 60px -20px rgba(0,0,0,0.6);
@@ -124,17 +124,27 @@ header.site {
 .thermo {
   background: linear-gradient(160deg, #1e3047, #132235);
   border: 1px solid rgba(255,255,255,0.12);
-  border-radius: 20px; padding: 18px 20px 20px;
-  position: absolute; left: -56px; bottom: 0; width: 280px;
+  border-radius: 20px; padding: 22px;
   box-shadow: 0 30px 60px -20px rgba(0,0,0,0.7);
 }
-.thermo .dial { max-width: 170px; margin: 6px auto 4px; }
-.thermo .dial-read .num { font-size: 3.9rem; }
-.thermo .thermo-stats { gap: 6px; }
-.thermo .thermo-stats div { padding: 8px 9px; }
-.thermo .thermo-stats b { font-size: 1.3rem; }
-.thermo .thermo-stats span { font-size: 11px; }
-.thermo .thermo-note { display: none; }
+@media (min-width: 961px) {
+  /* Desktop: compact horizontal thermostat hanging off the photo's bottom edge */
+  .hero-visual { padding-bottom: 150px; }
+  .thermo {
+    position: absolute; left: -40px; bottom: 0; width: 380px;
+    display: grid; grid-template-columns: 136px 1fr; grid-template-areas: "top top" "dial stats";
+    column-gap: 20px; row-gap: 6px; padding: 16px 20px 18px;
+  }
+  .thermo .thermo-top { grid-area: top; }
+  .thermo .dial { grid-area: dial; width: 136px; max-width: none; margin: 0; }
+  .thermo .dial-read .num { font-size: 3.1rem; }
+  .thermo .dial-read .lbl { font-size: 10px; }
+  .thermo .thermo-stats { grid-area: stats; grid-template-columns: 1fr; gap: 6px; margin: 0; align-content: center; }
+  .thermo .thermo-stats div { display: flex; align-items: baseline; justify-content: space-between; padding: 7px 12px; }
+  .thermo .thermo-stats b { font-size: 1.35rem; }
+  .thermo .thermo-stats span { font-size: 12px; }
+  .thermo .thermo-note { display: none; }
+}
 .thermo-top { display: flex; justify-content: space-between; font-size: 13px; color: #9fb2c6; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; }
 .dial { position: relative; width: 100%; max-width: 300px; margin: 14px auto 6px; aspect-ratio: 1; }
 .dial svg { width: 100%; height: 100%; display: block; }
@@ -286,8 +296,8 @@ footer.site { background: #0a131e; color: #9fb2c6; padding: 48px 0 110px; font-s
 @media (max-width: 960px) {
   .hero-grid, .gulf-grid, .faq-grid, .book-grid, .sec-head, .plan { grid-template-columns: 1fr; }
   .hero-grid { gap: 40px; }
-  .hero-visual { padding-bottom: 0; display: grid; gap: 16px; }
-  .thermo { position: static; width: auto; max-width: 440px; }
+  .hero-visual { display: grid; gap: 16px; }
+  .thermo { max-width: 440px; }
   .services, .reviews, .steps { grid-template-columns: 1fr 1fr; }
   .areas { grid-template-columns: repeat(2, 1fr); }
   .foot-grid { grid-template-columns: 1fr 1fr; }

@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kestrel Heating & Air</title>
+<meta name="description" content="24/7 AC repair, installation and heating service across Greater Houston. Upfront flat-rate pricing, same-day appointments. (Concept site.)">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;800;900&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink: #0f1b2a;
+  --ink-2: #1a2a3d;
+  --slate: #4a5b6e;
+  --paper: #f3f5f8;
+  --card: #ffffff;
+  --line: #dbe2ea;
+  --rust: #c4521c;
+  --rust-deep: #a5420f;
+  --ice: #3a8cc6;
+  --display: "Big Shoulders Display", "Arial Narrow", "Roboto Condensed", sans-serif;
+  --body: "Public Sans", "Segoe UI", system-ui, -apple-system, sans-serif;
+  --radius: 10px;
+  --wrap: 1160px;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--body);
+  font-size: 17px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+img, svg { max-width: 100%; }
+.i { fill: none; stroke: currentColor; stroke-linecap: round; stroke-linejoin: round; }
+.i-stroke { stroke-width: 2.2; }
+.i-check { stroke-width: 2.5; }
+a { color: inherit; }
+h1, h2, h3 { font-family: var(--display); line-height: 1; margin: 0; text-wrap: balance; letter-spacing: 0.005em; }
+h2 { font-size: clamp(2.4rem, 5vw, 3.6rem); font-weight: 800; text-transform: uppercase; }
+h3 { font-size: 1.6rem; font-weight: 800; text-transform: uppercase; }
+p { margin: 0; }
+.wrap { max-width: var(--wrap); margin: 0 auto; padding: 0 24px; }
+:focus-visible { outline: 3px solid var(--ice); outline-offset: 3px; border-radius: 4px; }
+
+/* Concept strip */
+.concept {
+  background: #fff4ec; color: var(--rust-deep);
+  font-size: 13.5px; font-weight: 600; text-align: center; padding: 7px 16px;
+  border-bottom: 1px solid #f1d6c4;
+}
+
+/* Header */
+header.site {
+  background: var(--ink); color: #fff;
+  position: sticky; top: 0; z-index: 20;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+.nav { display: flex; align-items: center; gap: 28px; height: 72px; }
+.brand { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+.brand svg { width: 40px; height: 40px; flex: none; }
+.brand-name { font-family: var(--display); font-weight: 900; font-size: 1.7rem; text-transform: uppercase; line-height: 0.9; }
+.brand-name small { display: block; font-size: 0.62rem; font-weight: 600; letter-spacing: 0.22em; color: #9fb2c6; margin-top: 3px; }
+.nav-links { display: flex; gap: 24px; margin-left: auto; font-size: 15px; font-weight: 500; }
+.nav-links a { text-decoration: none; color: #c9d5e2; }
+.nav-links a:hover { color: #fff; }
+.btn {
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: 13px 22px; border-radius: 8px; border: 0;
+  font: 700 16px/1 var(--body); text-decoration: none; cursor: pointer;
+  transition: background .15s, transform .15s;
+}
+.btn svg { width: 18px; height: 18px; flex: none; }
+.btn-rust { background: var(--rust); color: #fff; }
+.btn-rust:hover { background: var(--rust-deep); }
+.btn-ghost { background: transparent; color: #fff; box-shadow: inset 0 0 0 2px rgba(255,255,255,0.35); }
+.btn-ghost:hover { box-shadow: inset 0 0 0 2px #fff; }
+.btn-ink { background: var(--ink); color: #fff; }
+.btn-ink:hover { background: var(--ink-2); }
+.menu-toggle { display: none; margin-left: auto; background: none; border: 0; color: #fff; padding: 8px; cursor: pointer; }
+.menu-toggle svg { width: 28px; height: 28px; }
+
+/* Hero */
+.hero {
+  background:
+    radial-gradient(900px 500px at 85% 10%, rgba(196,82,28,0.28), transparent 60%),
+    radial-gradient(700px 500px at 0% 100%, rgba(58,140,198,0.18), transparent 60%),
+    var(--ink);
+  color: #fff; padding: 64px 0 72px; overflow: hidden;
+}
+.hero-grid { display: grid; grid-template-columns: 1.25fr 0.9fr; gap: 56px; align-items: center; }
+.eyebrow {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 13px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #ffb48a;
+}
+.eyebrow .dot { width: 8px; height: 8px; border-radius: 50%; background: #3ddc84; box-shadow: 0 0 0 4px rgba(61,220,132,0.18); }
+.hero h1 {
+  font-size: clamp(3.6rem, 9vw, 7.4rem); font-weight: 900; text-transform: uppercase;
+  line-height: 0.86; margin: 18px 0 22px;
+}
+.hero h1 .hot { color: var(--rust); }
+.hero h1 .cool { color: #8fd0ff; }
+.hero-lede { font-size: 1.15rem; color: #c9d5e2; max-width: 34em; }
+.hero-ctas { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 30px; }
+.hero-ctas .btn { padding: 17px 26px; font-size: 17px; }
+.trust { display: flex; flex-wrap: wrap; gap: 10px 22px; margin-top: 30px; padding: 0; list-style: none; font-size: 14.5px; color: #c9d5e2; }
+.trust li { display: flex; align-items: center; gap: 8px; }
+.trust svg { width: 18px; height: 18px; color: #3ddc84; flex: none; }
+
+/* Thermostat */
+.thermo {
+  background: linear-gradient(160deg, #1e3047, #132235);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 22px; padding: 28px; position: relative;
+  box-shadow: 0 30px 60px -20px rgba(0,0,0,0.55);
+}
+.thermo-top { display: flex; justify-content: space-between; font-size: 13px; color: #9fb2c6; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; }
+.dial { position: relative; width: 100%; max-width: 300px; margin: 14px auto 6px; aspect-ratio: 1; }
+.dial svg { width: 100%; height: 100%; display: block; }
+.dial-read { position: absolute; inset: 0; display: grid; place-content: center; text-align: center; }
+.dial-read .num { font-family: var(--display); font-weight: 900; font-size: 6.2rem; line-height: 0.9; font-variant-numeric: tabular-nums; }
+.dial-read .num sup { font-size: 0.4em; vertical-align: top; position: relative; top: 0.25em; color: #8fd0ff; }
+.dial-read .lbl { font-size: 13px; color: #9fb2c6; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 600; }
+.thermo-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 10px; }
+.thermo-stats div { background: rgba(255,255,255,0.05); border-radius: 10px; padding: 10px 12px; }
+.thermo-stats b { display: block; font-family: var(--display); font-size: 1.7rem; font-weight: 800; line-height: 1; font-variant-numeric: tabular-nums; }
+.thermo-stats span { font-size: 12px; color: #9fb2c6; }
+.thermo-stats .hot b { color: #ff9a62; }
+.thermo-note { font-size: 12px; color: #7f93a8; margin-top: 14px; text-align: center; }
+
+/* Sections */
+section { padding: 88px 0; }
+.sec-head { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: end; margin-bottom: 44px; }
+.sec-head p { color: var(--slate); max-width: 34em; }
+.kicker { font-size: 13px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--rust); margin-bottom: 12px; display: block; }
+
+/* Emergency band */
+.band { background: var(--rust); color: #fff; padding: 22px 0; }
+.band .wrap { display: flex; flex-wrap: wrap; align-items: center; gap: 16px 28px; justify-content: space-between; }
+.band p { font-family: var(--display); font-weight: 800; font-size: 1.9rem; text-transform: uppercase; line-height: 1; }
+.band p span { color: #ffd9c2; }
+.band .btn { background: #fff; color: var(--rust-deep); }
+.band .btn:hover { background: #ffeee4; }
+
+/* Services */
+.services { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+.svc {
+  background: var(--card); border: 1px solid var(--line); border-radius: var(--radius);
+  padding: 26px; display: flex; flex-direction: column; gap: 12px;
+  transition: border-color .15s, transform .15s;
+}
+.svc:hover { border-color: var(--rust); transform: translateY(-2px); }
+.svc-icon { width: 46px; height: 46px; border-radius: 10px; display: grid; place-items: center; background: #eef3f8; color: var(--ink); }
+.svc-icon svg { width: 26px; height: 26px; }
+.svc p { color: var(--slate); font-size: 15.5px; flex: 1; }
+.svc .price { font-size: 14px; font-weight: 600; color: var(--ink); border-top: 1px dashed var(--line); padding-top: 12px; display: flex; justify-content: space-between; }
+.svc .price b { color: var(--rust); font-variant-numeric: tabular-nums; }
+
+/* Gulf coast block */
+.gulf { background: var(--card); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.gulf-grid { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 64px; align-items: start; }
+.gulf-grid > div:first-child p { color: var(--slate); margin-top: 18px; }
+.facts { display: grid; gap: 0; border-top: 2px solid var(--ink); }
+.fact { display: grid; grid-template-columns: 120px 1fr; gap: 22px; padding: 22px 0; border-bottom: 1px solid var(--line); }
+.fact .big { font-family: var(--display); font-weight: 900; font-size: 3rem; line-height: 0.9; color: var(--rust); font-variant-numeric: tabular-nums; }
+.fact .big small { font-size: 0.45em; color: var(--slate); font-weight: 700; display: block; margin-top: 4px; letter-spacing: 0.04em; }
+.fact h3 { font-size: 1.3rem; margin-bottom: 6px; }
+.fact p { color: var(--slate); font-size: 15.5px; }
+
+/* Process */
+.steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; counter-reset: step; }
+.step { padding: 26px; border-radius: var(--radius); background: var(--ink); color: #fff; position: relative; }
+.step .n { font-family: var(--display); font-weight: 900; font-size: 3.4rem; line-height: 1; color: var(--rust); }
+.step h3 { margin: 10px 0 8px; font-size: 1.45rem; }
+.step p { color: #c9d5e2; font-size: 15.5px; }
+
+/* Plan */
+.plan {
+  display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 0;
+  border-radius: 16px; overflow: hidden; border: 1px solid var(--line); background: var(--card);
+}
+.plan-l { padding: 40px; }
+.plan-l ul { list-style: none; padding: 0; margin: 22px 0 0; display: grid; gap: 12px; }
+.plan-l li { display: flex; gap: 12px; align-items: flex-start; }
+.plan-l li svg { width: 20px; height: 20px; color: var(--rust); flex: none; margin-top: 4px; }
+.plan-r { background: #eef3f8; padding: 40px; display: flex; flex-direction: column; justify-content: center; gap: 14px; border-left: 1px solid var(--line); }
+.plan-price { font-family: var(--display); font-weight: 900; font-size: 5rem; line-height: 0.9; font-variant-numeric: tabular-nums; }
+.plan-price small { font-size: 0.32em; font-weight: 700; color: var(--slate); }
+.plan-r p { color: var(--slate); font-size: 15px; }
+
+/* Areas */
+.areas { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; border-top: 1px solid var(--line); border-left: 1px solid var(--line); }
+.area { padding: 16px 18px; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); background: var(--card); }
+.area b { display: block; font-weight: 600; }
+.area span { font-size: 13.5px; color: var(--slate); font-variant-numeric: tabular-nums; }
+.areas-note { margin-top: 18px; color: var(--slate); font-size: 15px; }
+
+/* Reviews */
+.reviews { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+.review { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 26px; display: flex; flex-direction: column; gap: 14px; }
+.stars { display: flex; gap: 3px; color: #e8a317; }
+.stars svg { width: 18px; height: 18px; }
+.review p { font-size: 16px; flex: 1; }
+.review footer { font-size: 14px; color: var(--slate); display: flex; justify-content: space-between; gap: 10px; }
+.review footer b { color: var(--ink); }
+.sample-tag { font-size: 11.5px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--slate); background: #eef3f8; border-radius: 4px; padding: 2px 6px; align-self: flex-start; }
+
+/* FAQ */
+.faq-grid { display: grid; grid-template-columns: 0.8fr 1.2fr; gap: 56px; }
+.faq-grid > div:first-child p { color: var(--slate); margin-top: 18px; }
+details { border-bottom: 1px solid var(--line); padding: 20px 0; }
+details:first-of-type { border-top: 2px solid var(--ink); }
+summary { cursor: pointer; font-weight: 700; font-size: 1.08rem; list-style: none; display: flex; justify-content: space-between; gap: 20px; }
+summary::-webkit-details-marker { display: none; }
+summary::after { content: "+"; font-family: var(--display); font-size: 1.8rem; line-height: 0.8; color: var(--rust); }
+details[open] summary::after { content: "–"; }
+details p { color: var(--slate); margin-top: 12px; max-width: 40em; }
+
+/* Booking */
+.book { background: var(--ink); color: #fff; }
+.book-grid { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 64px; }
+.book-grid h2 { color: #fff; }
+.book-info p { color: #c9d5e2; margin-top: 18px; }
+.contact-list { list-style: none; padding: 0; margin: 30px 0 0; display: grid; gap: 16px; }
+.contact-list li { display: flex; gap: 14px; align-items: flex-start; }
+.contact-list svg { width: 22px; height: 22px; color: var(--rust); flex: none; margin-top: 3px; }
+.contact-list b { display: block; font-size: 1.05rem; }
+.contact-list span { color: #9fb2c6; font-size: 14.5px; }
+form.card { background: var(--card); color: var(--ink); border-radius: 16px; padding: 32px; display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.field { display: grid; gap: 6px; }
+.field.full { grid-column: 1 / -1; }
+label { font-size: 14px; font-weight: 600; }
+input, select, textarea {
+  font: 16px var(--body); color: var(--ink);
+  border: 1.5px solid var(--line); border-radius: 8px; padding: 12px 14px; background: #fff; width: 100%;
+}
+input:focus, select:focus, textarea:focus { outline: none; border-color: var(--ice); box-shadow: 0 0 0 3px rgba(58,140,198,0.2); }
+textarea { resize: vertical; min-height: 96px; }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.chips input { position: absolute; opacity: 0; width: 1px; height: 1px; }
+.chips label { border: 1.5px solid var(--line); border-radius: 999px; padding: 8px 14px; font-weight: 500; cursor: pointer; font-size: 14.5px; }
+.chips input:checked + label { border-color: var(--rust); background: #fff4ec; color: var(--rust-deep); font-weight: 600; }
+.chips input:focus-visible + label { outline: 3px solid var(--ice); outline-offset: 2px; }
+form .btn { justify-content: center; padding: 16px; font-size: 17px; }
+.form-msg { grid-column: 1 / -1; font-size: 14.5px; border-radius: 8px; padding: 12px 14px; background: #eaf6ee; color: #1c6b3a; display: none; }
+.form-msg.show { display: block; }
+.form-fine { grid-column: 1 / -1; font-size: 12.5px; color: var(--slate); }
+
+/* Footer */
+footer.site { background: #0a131e; color: #9fb2c6; padding: 48px 0 110px; font-size: 14.5px; }
+.foot-grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 32px; }
+.foot-grid h4 { color: #fff; font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase; margin: 0 0 12px; }
+.foot-grid ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 6px; }
+.foot-grid a { text-decoration: none; }
+.foot-grid a:hover { color: #fff; }
+.foot-bottom { margin-top: 36px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.08); display: flex; flex-wrap: wrap; gap: 10px 24px; justify-content: space-between; font-size: 13px; }
+
+/* Mobile call bar */
+.callbar { display: none; }
+
+@media (max-width: 960px) {
+  .hero-grid, .gulf-grid, .faq-grid, .book-grid, .sec-head, .plan { grid-template-columns: 1fr; }
+  .hero-grid { gap: 40px; }
+  .thermo { max-width: 440px; }
+  .services, .reviews, .steps { grid-template-columns: 1fr 1fr; }
+  .areas { grid-template-columns: repeat(2, 1fr); }
+  .plan-r { border-left: 0; border-top: 1px solid var(--line); }
+  .foot-grid { grid-template-columns: 1fr 1fr; }
+  .nav-links, .nav .btn { display: none; }
+  .menu-toggle { display: block; }
+  .nav-links.open {
+    display: flex; flex-direction: column; position: absolute; top: 72px; left: 0; right: 0;
+    background: var(--ink); padding: 12px 24px 24px; gap: 4px; border-bottom: 1px solid rgba(255,255,255,0.1);
+  }
+  .nav-links.open a { padding: 12px 0; font-size: 17px; border-bottom: 1px solid rgba(255,255,255,0.06); }
+}
+@media (max-width: 620px) {
+  body { font-size: 16px; }
+  .wrap { padding: 0 18px; }
+  section { padding: 64px 0; }
+  .hero { padding: 44px 0 56px; }
+  .services, .reviews, .steps { grid-template-columns: 1fr; }
+  form.card { grid-template-columns: 1fr; padding: 22px; }
+  .fact { grid-template-columns: 1fr; gap: 8px; }
+  .plan-l, .plan-r { padding: 28px; }
+  .foot-grid { grid-template-columns: 1fr; }
+  .band p { font-size: 1.6rem; }
+  .callbar {
+    display: grid; grid-template-columns: 1.3fr 1fr; gap: 10px;
+    position: fixed; left: 0; right: 0; bottom: 0; z-index: 30;
+    padding: 10px 14px calc(10px + env(safe-area-inset-bottom));
+    background: rgba(15,27,42,0.96); border-top: 1px solid rgba(255,255,255,0.1);
+  }
+  .callbar .btn { justify-content: center; padding: 14px 10px; font-size: 15.5px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .svc, .btn { transition: none; }
+  .svc:hover { transform: none; }
+}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="logo" viewBox="0 0 48 48"><rect width="48" height="48" rx="10" fill="#c4521c"/><path d="M6 22 L22 16 L26 20 L42 12 L30 26 L34 36 L24 29 L14 33 L18 25 Z" fill="#fff"/><circle cx="25" cy="19.5" r="1.4" fill="#c4521c"/></symbol>
+  <symbol id="i-phone" viewBox="0 0 24 24"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></symbol>
+  <symbol id="i-star" viewBox="0 0 24 24"><path fill="currentColor" d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></symbol>
+</svg>
+
+<div class="concept">Concept project · Kestrel Heating &amp; Air is a fictional company created for a web design portfolio.</div>
+
+<header class="site">
+  <div class="wrap nav">
+    <a class="brand" href="#top" aria-label="Kestrel Heating & Air home">
+      <svg aria-hidden="true"><use href="#logo"/></svg>
+      <span class="brand-name">Kestrel<small>Heating &amp; Air · Houston</small></span>
+    </a>
+    <nav class="nav-links" id="navlinks" aria-label="Main">
+      <a href="#services">Services</a>
+      <a href="#plan">Comfort Club</a>
+      <a href="#areas">Service Areas</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <a class="btn btn-rust" href="tel:+17135550142">
+      <svg class="i i-stroke" aria-hidden="true"><use href="#i-phone"/></svg>
+      (713) 555-0142
+    </a>
+    <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false" aria-controls="navlinks">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+    </button>
+  </div>
+</header>
+
+<main id="top">
+
+<!-- HERO -->
+<section class="hero" aria-labelledby="hero-title">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="eyebrow"><span class="dot" aria-hidden="true"></span>Techs on call now · 24/7/365</span>
+      <h1 id="hero-title">Houston hits <span class="hot">100°</span>.<br>Your house stays <span class="cool">72°</span>.</h1>
+      <p class="hero-lede">AC repair, replacement and heating for Greater Houston homes. Same-day appointments, a flat-rate price before we touch a tool, and a tech who actually picks up the phone at 2&nbsp;a.m. in August.</p>
+      <div class="hero-ctas">
+        <a class="btn btn-rust" href="tel:+17135550142">
+          <svg class="i i-stroke" aria-hidden="true"><use href="#i-phone"/></svg>
+          Call (713) 555-0142
+        </a>
+        <a class="btn btn-ghost" href="#book">Book online</a>
+      </div>
+      <ul class="trust">
+        <li><svg class="i i-check" aria-hidden="true"><use href="#i-check"/></svg>Same-day service</li>
+        <li><svg class="i i-check" aria-hidden="true"><use href="#i-check"/></svg>Upfront flat-rate pricing</li>
+        <li><svg class="i i-check" aria-hidden="true"><use href="#i-check"/></svg>10-year parts &amp; labor warranty</li>
+        <li><svg class="i i-check" aria-hidden="true"><use href="#i-check"/></svg>Financing available</li>
+      </ul>
+    </div>
+
+    <div class="thermo" aria-label="Thermostat illustration: 72 degrees inside, 98 degrees outside">
+      <div class="thermo-top"><span>Living room</span><span>Cooling ●</span></div>
+      <div class="dial">
+        <svg viewBox="0 0 200 200" aria-hidden="true">
+          <defs>
+            <linearGradient id="arcGrad" x1="0" y1="1" x2="1" y2="0">
+              <stop offset="0" stop-color="#8fd0ff"/>
+              <stop offset="1" stop-color="#3a8cc6"/>
+            </linearGradient>
+          </defs>
+          <circle cx="100" cy="100" r="84" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="10" stroke-dasharray="395.8 527.8" stroke-linecap="round" transform="rotate(135 100 100)"/>
+          <circle id="arc" cx="100" cy="100" r="84" fill="none" stroke="url(#arcGrad)" stroke-width="10" stroke-dasharray="190 527.8" stroke-linecap="round" transform="rotate(135 100 100)"/>
+          <g stroke="rgba(255,255,255,0.18)" stroke-width="1.5">
+            <line x1="100" y1="6" x2="100" y2="12"/>
+            <line x1="194" y1="100" x2="188" y2="100"/>
+            <line x1="6" y1="100" x2="12" y2="100"/>
+          </g>
+        </svg>
+        <div class="dial-read">
+          <span class="lbl">Inside</span>
+          <span class="num"><span id="tempNum">72</span><sup>°F</sup></span>
+          <span class="lbl">Set to 72°</span>
+        </div>
+      </div>
+      <div class="thermo-stats">
+        <div class="hot"><b>98°</b><span>Outside</span></div>
+        <div><b>74%</b><span>Humidity</span></div>
+        <div><b>45%</b><span>Indoor RH</span></div>
+      </div>
+      <p class="thermo-note">A properly sized system pulls indoor humidity down too, not just the temperature.</p>
+    </div>
+  </div>
+</section>
+
+<div class="band">
+  <div class="wrap">
+    <p>AC out? <span>No overtime fees</span> on nights &amp; weekends.</p>
+    <a class="btn" href="tel:+17135550142">Call (713) 555-0142</a>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section id="services" aria-labelledby="svc-title">
+  <div class="wrap">
+    <div class="sec-head">
+      <div><span class="kicker">What we do</span><h2 id="svc-title">Heating &amp; cooling, start to finish</h2></div>
+      <p>One company for the whole system: the condenser in the yard, the air handler in the attic, and every foot of duct in between. Every price below is the starting flat rate, quoted in writing before work begins.</p>
+    </div>
+    <div class="services">
+      <article class="svc">
+        <div class="svc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2v20M4.9 4.9l14.2 14.2M2 12h20M4.9 19.1 19.1 4.9"/><path d="m9 4 3 2 3-2M9 20l3-2 3 2M4 9l2 3-2 3M20 9l-2 3 2 3"/></svg></div>
+        <h3>AC Repair</h3>
+        <p>Warm air, frozen coils, a unit that hums but won't start. Most repairs are finished on the first visit because our trucks carry the common parts.</p>
+        <div class="price">Diagnostic <b>$89</b></div>
+      </article>
+      <article class="svc">
+        <div class="svc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M7 20h10M12 16v4M7 8h10M7 12h6"/></svg></div>
+        <h3>AC Replacement</h3>
+        <p>High-efficiency SEER2 systems sized with a Manual J load calculation for your house, not a rule of thumb. Old unit hauled away, permit pulled for you.</p>
+        <div class="price">Free in-home estimate <b>$0</b></div>
+      </article>
+      <article class="svc">
+        <div class="svc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2c1 4 5 6 5 11a5 5 0 0 1-10 0c0-2 1-3.5 2-4.5 0 2 1 3 2 3 0-3-1-6 1-9.5z"/></svg></div>
+        <h3>Heating &amp; Heat Pumps</h3>
+        <p>Gas furnaces, electric heat strips and heat pumps. Ready before the first cold front blows through, including carbon monoxide safety checks.</p>
+        <div class="price">Furnace tune-up <b>$79</b></div>
+      </article>
+      <article class="svc">
+        <div class="svc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18l3 3 6.3-6.3a4 4 0 0 0 5.4-5.4l-2.5 2.5-2.4-.6-.6-2.4z"/></svg></div>
+        <h3>Maintenance</h3>
+        <p>A 21-point spring tune-up: coil cleaning, refrigerant check, drain line flush and capacitor test. The cheapest way to avoid a July breakdown.</p>
+        <div class="price">AC tune-up <b>$79</b></div>
+      </article>
+      <article class="svc">
+        <div class="svc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.7 6.3 8.4a8 8 0 1 0 11.4 0z"/></svg></div>
+        <h3>Humidity &amp; Air Quality</h3>
+        <p>Whole-home dehumidifiers, UV lights and MERV 13 filtration. Stops the musty smell, the sticky sheets and the mold behind the closet door.</p>
+        <div class="price">Air quality check <b>$49</b></div>
+      </article>
+      <article class="svc">
+        <div class="svc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h8a3 3 0 0 0 0-6M3 16h12a3 3 0 0 1 0 6M3 12h16a3 3 0 0 0 0-6"/></svg></div>
+        <h3>Ductwork &amp; Attics</h3>
+        <p>Leaky ducts in a 140° attic can waste a quarter of the air you pay to cool. We seal, repair, replace and add insulation where it counts.</p>
+        <div class="price">Duct leak test <b>$129</b></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- GULF COAST -->
+<section class="gulf" aria-labelledby="gulf-title">
+  <div class="wrap gulf-grid">
+    <div>
+      <span class="kicker">Why it matters here</span>
+      <h2 id="gulf-title">Built for Gulf Coast summers</h2>
+      <p>An AC in Houston works harder than almost anywhere in the country. It has to fight the heat and the humidity, for months at a time, with the air handler sitting in a scorching attic. We install and repair with that in mind.</p>
+    </div>
+    <div class="facts">
+      <div class="fact">
+        <div class="big">2×<small>per year</small></div>
+        <div><h3>Service twice, not once</h3><p>A spring visit for cooling and a fall visit for heating. Houston systems can run most of the year, so an annual check isn't enough.</p></div>
+      </div>
+      <div class="fact">
+        <div class="big">50%<small>indoor RH</small></div>
+        <div><h3>Target the humidity</h3><p>An oversized unit cools the air fast and shuts off before it dries it. Correct sizing keeps indoor humidity under about 50%, which is where your home starts to feel comfortable.</p></div>
+      </div>
+      <div class="fact">
+        <div class="big">Jun–Nov<small>storm season</small></div>
+        <div><h3>Hurricane-ready</h3><p>Condenser tie-downs, surge protection and a post-storm inspection so you know your system is safe to turn back on after the power returns.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section aria-labelledby="how-title">
+  <div class="wrap">
+    <div class="sec-head">
+      <div><span class="kicker">How it works</span><h2 id="how-title">Three steps, no surprises</h2></div>
+      <p>You know the price before we start and you get a text with your tech's name and photo before they pull into the driveway.</p>
+    </div>
+    <div class="steps">
+      <div class="step"><div class="n">01</div><h3>Call or book</h3><p>Pick a two-hour window online or call us. Emergency calls go straight to a tech on duty, day or night.</p></div>
+      <div class="step"><div class="n">02</div><h3>Get a flat price</h3><p>Your tech diagnoses the problem and gives you a written price. You approve it before any work begins.</p></div>
+      <div class="step"><div class="n">03</div><h3>Cool again</h3><p>Most repairs are finished the same day. Every repair is backed by our workmanship guarantee.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- PLAN -->
+<section id="plan" style="padding-top:0" aria-labelledby="plan-title">
+  <div class="wrap">
+    <div class="plan">
+      <div class="plan-l">
+        <span class="kicker">Maintenance plan</span>
+        <h2 id="plan-title">Kestrel Comfort Club</h2>
+        <ul>
+          <li><svg class="i i-check" aria-hidden="true"><use href="#i-check"/></svg>Spring AC tune-up and fall heating tune-up</li>
+          <li><svg class="i i-check" aria-hidden="true"><use href="#i-check"/></svg>Priority scheduling, members go to the front of the line in a heat wave</li>
+          <li><svg class="i i-check" aria-hidden="true"><use href="#i-check"/></svg>15% off every repair, and no diagnostic fee</li>
+          <li><svg class="i i-check" aria-hidden="true"><use href="#i-check"/></svg>Drain line treatment to prevent clogs and ceiling leaks</li>
+        </ul>
+      </div>
+      <div class="plan-r">
+        <div class="plan-price">$19<small> / month</small></div>
+        <p>Covers one system. Add a second for $9/month. Cancel any time.</p>
+        <a class="btn btn-ink" href="#book">Join the Comfort Club</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AREAS -->
+<section id="areas" class="gulf" aria-labelledby="areas-title">
+  <div class="wrap">
+    <div class="sec-head">
+      <div><span class="kicker">Service areas</span><h2 id="areas-title">All over Greater Houston</h2></div>
+      <p>Trucks are stationed on the west, north and south sides of town, so a tech is usually less than half an hour from your door.</p>
+    </div>
+    <div class="areas">
+      <div class="area"><b>Houston</b><span>Heights, Montrose, Memorial</span></div>
+      <div class="area"><b>Katy</b><span>77449 · 77450 · 77494</span></div>
+      <div class="area"><b>Sugar Land</b><span>77478 · 77479</span></div>
+      <div class="area"><b>Cypress</b><span>77429 · 77433</span></div>
+      <div class="area"><b>The Woodlands</b><span>77380 · 77381 · 77382</span></div>
+      <div class="area"><b>Spring</b><span>77373 · 77379 · 77389</span></div>
+      <div class="area"><b>Pearland</b><span>77581 · 77584</span></div>
+      <div class="area"><b>Humble &amp; Kingwood</b><span>77338 · 77339 · 77345</span></div>
+    </div>
+    <p class="areas-note">Not on the list? If you're inside the Grand Parkway, we almost certainly cover you. Enter your ZIP in the booking form to check.</p>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section id="reviews" aria-labelledby="rev-title">
+  <div class="wrap">
+    <div class="sec-head">
+      <div><span class="kicker">Reviews</span><h2 id="rev-title">What neighbors say</h2></div>
+      <p>On a live site this section pulls in verified Google reviews. The cards below are placeholders showing the layout.</p>
+    </div>
+    <div class="reviews">
+      <article class="review">
+        <span class="sample-tag">Sample review</span>
+        <div class="stars" aria-label="5 out of 5 stars"><svg aria-hidden="true"><use href="#i-star"/></svg><svg aria-hidden="true"><use href="#i-star"/></svg><svg aria-hidden="true"><use href="#i-star"/></svg><svg aria-hidden="true"><use href="#i-star"/></svg><svg aria-hidden="true"><use href="#i-star"/></svg></div>
+        <p>Customer quote about a fast emergency repair goes here: what broke, how quickly the tech arrived, and how the price compared to the quote.</p>
+        <footer><b>Homeowner</b><span>Katy, TX</span></footer>
+      </article>
+      <article class="review">
+        <span class="sample-tag">Sample review</span>
+        <div class="stars" aria-label="5 out of 5 stars"><svg aria-hidden="true"><use href="#i-star"/></svg><svg aria-hidden="true"><use href="#i-star"/></svg><svg aria-hidden="true"><use href="#i-star"/></svg><svg aria-hidden="true"><use href="#i-star"/></svg><svg aria-hidden="true"><use href="#i-star"/></svg></div>
+        <p>Customer quote about a full system replacement goes here: the in-home estimate, the install day, and the difference in the electric bill.</p>
+        <footer><b>Homeowner</b><span>Sugar Land, TX</span></footer>
+      </article>
+      <article class="review">
+        <span class="sample-tag">Sample review</span>
+        <div class="stars" aria-label="5 out of 5 stars"><svg aria-hidden="true"><use href="#i-star"/></svg><svg aria-hidden="true"><use href="#i-star"/></svg><svg aria-hidden="true"><use href="#i-star"/></svg><svg aria-hidden="true"><use href="#i-star"/></svg><svg aria-hidden="true"><use href="#i-star"/></svg></div>
+        <p>Customer quote about the Comfort Club goes here: priority service during a heat wave and the tune-up that caught a problem early.</p>
+        <footer><b>Homeowner</b><span>The Woodlands, TX</span></footer>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq" class="gulf" aria-labelledby="faq-title">
+  <div class="wrap faq-grid">
+    <div>
+      <span class="kicker">FAQ</span>
+      <h2 id="faq-title">Straight answers</h2>
+      <p>Can't find your question? Call us. The person who answers knows HVAC, not a script.</p>
+    </div>
+    <div>
+      <details open>
+        <summary>How much does AC repair cost in Houston?</summary>
+        <p>Most repairs land between $150 and $650. Capacitors and contactors sit at the low end; refrigerant leaks and fan motors at the high end. Our $89 diagnostic is credited toward the repair if you go ahead with it.</p>
+      </details>
+      <details>
+        <summary>Should I repair or replace my AC?</summary>
+        <p>If your system is over 12 years old, uses R-22 refrigerant, or the repair costs more than a third of a new unit, replacement usually makes more sense. Your tech will show you both numbers side by side and let you decide.</p>
+      </details>
+      <details>
+        <summary>Do you offer financing?</summary>
+        <p>Yes. New systems can be financed with approved credit, including plans with 0% interest for a promotional period. Ask your comfort advisor during the free estimate.</p>
+      </details>
+      <details>
+        <summary>Do you charge extra for nights and weekends?</summary>
+        <p>No. Emergency service costs the same at 2 a.m. on a Sunday as it does at 10 a.m. on a Tuesday.</p>
+      </details>
+      <details>
+        <summary>Are you licensed and insured?</summary>
+        <p>Every Texas HVAC contractor must hold a TDLR air conditioning and refrigeration contractor license. Ours is printed on every invoice and at the bottom of this page, and we carry full liability insurance.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- BOOKING -->
+<section id="book" class="book" aria-labelledby="book-title">
+  <div class="wrap book-grid">
+    <div class="book-info">
+      <span class="kicker">Book service</span>
+      <h2 id="book-title">Get on the schedule today</h2>
+      <p>Send a request and we'll text you back within 15 minutes during business hours to confirm your window. For no cooling or a gas smell, call instead.</p>
+      <ul class="contact-list">
+        <li><svg class="i i-stroke" aria-hidden="true"><use href="#i-phone"/></svg><div><b><a href="tel:+17135550142">(713) 555-0142</a></b><span>24/7 emergency line</span></div></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 6-10 7L2 6"/></svg><div><b>service@kestrelair.example</b><span>Quotes and paperwork</span></div></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg><div><b>Office: Mon–Sat, 7 a.m.–7 p.m.</b><span>Emergency techs on call around the clock</span></div></li>
+      </ul>
+    </div>
+
+    <form class="card" id="bookForm" novalidate>
+      <div class="field"><label for="f-name">Name</label><input id="f-name" name="name" autocomplete="name" required></div>
+      <div class="field"><label for="f-phone">Mobile phone</label><input id="f-phone" name="phone" type="tel" autocomplete="tel" placeholder="(713) 555-0100" required></div>
+      <div class="field"><label for="f-zip">ZIP code</label><input id="f-zip" name="zip" inputmode="numeric" maxlength="5" placeholder="77494" required></div>
+      <div class="field">
+        <label for="f-service">What do you need?</label>
+        <select id="f-service" name="service">
+          <option>AC repair</option>
+          <option>New AC / replacement estimate</option>
+          <option>Heating repair</option>
+          <option>Tune-up / maintenance</option>
+          <option>Humidity or air quality</option>
+          <option>Ductwork</option>
+        </select>
+      </div>
+      <fieldset class="field full" style="border:0;padding:0;margin:0">
+        <legend style="font-size:14px;font-weight:600;margin-bottom:6px;padding:0">Preferred window</legend>
+        <div class="chips">
+          <input type="radio" name="window" id="w1" value="8-10" checked><label for="w1">8–10 a.m.</label>
+          <input type="radio" name="window" id="w2" value="10-12"><label for="w2">10–12</label>
+          <input type="radio" name="window" id="w3" value="12-2"><label for="w3">12–2 p.m.</label>
+          <input type="radio" name="window" id="w4" value="2-4"><label for="w4">2–4 p.m.</label>
+          <input type="radio" name="window" id="w5" value="4-6"><label for="w5">4–6 p.m.</label>
+        </div>
+      </fieldset>
+      <div class="field full"><label for="f-msg">Tell us what's happening (optional)</label><textarea id="f-msg" name="message" placeholder="e.g. Upstairs unit blowing warm air since this morning"></textarea></div>
+      <button class="btn btn-rust full" type="submit" style="grid-column:1/-1">Request appointment</button>
+      <p class="form-msg" id="formMsg" role="status"></p>
+      <p class="form-fine">Demo form. On the live site this sends your request to the dispatch team.</p>
+    </form>
+  </div>
+</section>
+
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <a class="brand" href="#top" style="color:#fff">
+          <svg aria-hidden="true"><use href="#logo"/></svg>
+          <span class="brand-name">Kestrel<small>Heating &amp; Air · Houston</small></span>
+        </a>
+        <p style="margin-top:16px;max-width:30em">Heating and air conditioning for Greater Houston homes. Upfront pricing, same-day service, and techs who show up when they say they will.</p>
+      </div>
+      <div><h4>Services</h4><ul><li><a href="#services">AC repair</a></li><li><a href="#services">AC replacement</a></li><li><a href="#services">Heating</a></li><li><a href="#services">Air quality</a></li></ul></div>
+      <div><h4>Company</h4><ul><li><a href="#plan">Comfort Club</a></li><li><a href="#areas">Service areas</a></li><li><a href="#reviews">Reviews</a></li><li><a href="#faq">FAQ</a></li></ul></div>
+      <div><h4>Contact</h4><ul><li><a href="tel:+17135550142">(713) 555-0142</a></li><li>service@kestrelair.example</li><li>Houston, TX</li><li>TX License: TACLA-XXXXXX (placeholder)</li></ul></div>
+    </div>
+    <div class="foot-bottom">
+      <span>© <span id="yr">2026</span> Kestrel Heating &amp; Air. Concept site, fictional business, phone uses a reserved 555 number.</span>
+      <span>Designed &amp; built by Slobodan Dabic</span>
+    </div>
+  </div>
+</footer>
+
+<div class="callbar">
+  <a class="btn btn-rust" href="tel:+17135550142">
+    <svg class="i i-stroke" aria-hidden="true"><use href="#i-phone"/></svg>
+    Call now
+  </a>
+  <a class="btn btn-ghost" href="#book">Book online</a>
+</div>
+
+<script>
+(function () {
+  var yr = document.getElementById('yr');
+  if (yr) yr.textContent = new Date().getFullYear();
+
+  // Mobile menu
+  var toggle = document.getElementById('menuToggle');
+  var links = document.getElementById('navlinks');
+  toggle.addEventListener('click', function () {
+    var open = links.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+  links.addEventListener('click', function (e) {
+    if (e.target.tagName === 'A') { links.classList.remove('open'); toggle.setAttribute('aria-expanded', 'false'); }
+  });
+
+  // Thermostat: cools from outside temp to set point on load
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var num = document.getElementById('tempNum');
+  var arc = document.getElementById('arc');
+  var FULL = 395.8, from = 98, to = 72;
+  function arcFor(t) { return Math.max(20, (t - 50) / 50 * FULL); }
+  if (!reduce && num && arc) {
+    var start = null, dur = 1800;
+    num.textContent = from;
+    arc.setAttribute('stroke-dasharray', arcFor(from) + ' 527.8');
+    function frame(ts) {
+      if (!start) start = ts;
+      var p = Math.min(1, (ts - start) / dur);
+      var e = 1 - Math.pow(1 - p, 3);
+      var t = Math.round(from + (to - from) * e);
+      num.textContent = t;
+      arc.setAttribute('stroke-dasharray', arcFor(from + (to - from) * e) + ' 527.8');
+      if (p < 1) requestAnimationFrame(frame);
+    }
+    setTimeout(function () { requestAnimationFrame(frame); }, 400);
+  } else if (arc) {
+    arc.setAttribute('stroke-dasharray', arcFor(to) + ' 527.8');
+  }
+
+  // Booking form (demo)
+  var form = document.getElementById('bookForm');
+  var msg = document.getElementById('formMsg');
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var name = form.name.value.trim();
+    var phone = form.phone.value.trim();
+    var zip = form.zip.value.trim();
+    msg.style.background = ''; msg.style.color = '';
+    if (!name || !phone || !/^\d{5}$/.test(zip)) {
+      msg.textContent = 'Please add your name, a phone number and a 5-digit ZIP code.';
+      msg.style.background = '#fdecea'; msg.style.color = '#a12a1f';
+      msg.classList.add('show');
+      return;
+    }
+    var win = form.querySelector('input[name="window"]:checked').nextElementSibling.textContent;
+    msg.textContent = 'Thanks, ' + name.split(' ')[0] + '. In the live version, dispatch would now text ' + phone + ' to confirm your ' + win + ' window. This demo did not send anything.';
+    msg.classList.add('show');
+  });
+})();
+</script>
+</body>
+</html>

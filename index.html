@@ -727,28 +727,41 @@ footer.site { background: #0a131e; color: #9fb2c6; padding: 48px 0 110px; font-s
     if (e.target.tagName === 'A') { links.classList.remove('open'); toggle.setAttribute('aria-expanded', 'false'); }
   });
 
-  // Thermostat: cools from outside temp to set point on load
+  // Thermostat: cools from outside temp to set point when it scrolls into view
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var num = document.getElementById('tempNum');
   var arc = document.getElementById('arc');
+  var thermo = document.querySelector('.thermo');
   var FULL = 395.8, from = 98, to = 72;
   function arcFor(t) { return Math.max(20, (t - 50) / 50 * FULL); }
-  if (!reduce && num && arc) {
+  function setTemp(t) {
+    num.textContent = Math.round(t);
+    arc.setAttribute('stroke-dasharray', arcFor(t) + ' 527.8');
+  }
+  function runCooldown() {
     var start = null, dur = 1800;
-    num.textContent = from;
-    arc.setAttribute('stroke-dasharray', arcFor(from) + ' 527.8');
     function frame(ts) {
       if (!start) start = ts;
       var p = Math.min(1, (ts - start) / dur);
       var e = 1 - Math.pow(1 - p, 3);
-      var t = Math.round(from + (to - from) * e);
-      num.textContent = t;
-      arc.setAttribute('stroke-dasharray', arcFor(from + (to - from) * e) + ' 527.8');
+      setTemp(from + (to - from) * e);
       if (p < 1) requestAnimationFrame(frame);
     }
-    setTimeout(function () { requestAnimationFrame(frame); }, 400);
-  } else if (arc) {
-    arc.setAttribute('stroke-dasharray', arcFor(to) + ' 527.8');
+    setTimeout(function () { requestAnimationFrame(frame); }, 250);
+  }
+  if (num && arc) {
+    if (reduce) {
+      setTemp(to);
+    } else if ('IntersectionObserver' in window && thermo) {
+      setTemp(from);
+      var io = new IntersectionObserver(function (entries) {
+        if (entries[0].isIntersecting) { io.disconnect(); runCooldown(); }
+      }, { threshold: 0.6 });
+      io.observe(thermo);
+    } else {
+      setTemp(from);
+      runCooldown();
+    }
   }
 
   // Booking form (demo)

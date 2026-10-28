@@ -215,10 +215,9 @@ section { padding: 88px 0; }
 .plan-l ul { list-style: none; padding: 0; margin: 22px 0 0; display: grid; gap: 12px; }
 .plan-l li { display: flex; gap: 12px; align-items: flex-start; }
 .plan-l li svg { width: 20px; height: 20px; color: var(--rust); flex: none; margin-top: 4px; }
-.plan-r {
-  background: linear-gradient(180deg, rgba(15,27,42,0.80), rgba(15,27,42,0.92)), url(images/thermostat.webp) center / cover;
-  color: #fff; padding: 40px; display: flex; flex-direction: column; justify-content: center; gap: 14px;
-}
+.plan-r { background: var(--ink); color: #fff; display: flex; flex-direction: column; }
+.plan-img { width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; object-position: 50% 45%; display: block; }
+.plan-body { padding: 28px 40px 34px; display: flex; flex-direction: column; gap: 12px; }
 .plan-price { font-family: var(--display); font-weight: 900; font-size: 5rem; line-height: 0.9; font-variant-numeric: tabular-nums; }
 .plan-price small { font-size: 0.32em; font-weight: 700; color: #c9d5e2; }
 .plan-r p { color: #c9d5e2; font-size: 15px; }
@@ -317,7 +316,7 @@ footer.site { background: #0a131e; color: #9fb2c6; padding: 48px 0 110px; font-s
   .services, .reviews, .steps { grid-template-columns: 1fr; }
   form.card { grid-template-columns: 1fr; padding: 22px; }
   .fact { grid-template-columns: 1fr; gap: 8px; }
-  .plan-l, .plan-r { padding: 28px; }
+  .plan-l, .plan-body { padding: 28px; }
   .foot-grid { grid-template-columns: 1fr; }
   .band p { font-size: 1.6rem; }
   .callbar {
@@ -541,9 +540,12 @@ footer.site { background: #0a131e; color: #9fb2c6; padding: 48px 0 110px; font-s
         </ul>
       </div>
       <div class="plan-r">
+        <img class="plan-img" src="images/thermostat.webp" width="1200" height="800" alt="Homeowner adjusting a wall thermostat set to 72 degrees" loading="lazy">
+        <div class="plan-body">
         <div class="plan-price">$19<small> / month</small></div>
         <p>Covers one system. Add a second for $9/month. Cancel any time.</p>
         <a class="btn btn-rust" href="#book" style="align-self:flex-start">Join the Comfort Club</a>
+        </div>
       </div>
     </div>
   </div>

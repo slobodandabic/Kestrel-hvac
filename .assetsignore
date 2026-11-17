@@ -4,3 +4,8 @@ README.md
 vercel.json
 .git
 .github
+worker
+.wrangler
+.dev.vars
+node_modules
+.gitignore

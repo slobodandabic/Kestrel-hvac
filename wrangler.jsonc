@@ -1,7 +1,19 @@
 {
   "name": "kestrel-hvac",
+  "main": "worker/index.js",
   "compatibility_date": "2026-10-01",
   "assets": {
-    "directory": "./"
-  }
+    "directory": "./",
+    "binding": "ASSETS",
+    "run_worker_first": true
+  },
+  // The panel page is bundled into the Worker as text.
+  "rules": [{ "type": "Text", "globs": ["**/*.html"], "fallthrough": true }],
+  // Username for /admin. The password is the secret ADMIN_PASSWORD, set in the Cloudflare dashboard (never in this repo).
+  "vars": { "ADMIN_USER": "kestrel" },
+  "durable_objects": {
+    "bindings": [{ "name": "CMS", "class_name": "CmsStore" }]
+  },
+  "migrations": [{ "tag": "v1", "new_sqlite_classes": ["CmsStore"] }],
+  "observability": { "enabled": true }
 }
